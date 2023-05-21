@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="root">
+        <div class="useAPI"></div>
+        
+    </div>
+
+    <script>
+        let useAPI = document.getElementsByClassName("useAPI")
+        fetch("https://fakestoreapi.com/products")
+            .then((response) => response.json())
+            .then((data) => {
+                for (i = 0; i < data.length; i++) {
+                    for (j = 0; j < useAPI.length; j++) {
+                        useAPI[j].innerHTML += `
+                        <img src="${data[i].image}" width = "200">
+                        <h1>${data[i].title}</h1>
+                        <p>${data[i].price}</p>
+                        `
+                    }
+                }
+            })
+    </script>
+</body>
+
+</html>
